@@ -489,7 +489,7 @@
 
 // export default ControlPanel;
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 // Interfaces for API Data

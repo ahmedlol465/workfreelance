@@ -1,4 +1,3 @@
-import React from 'react';
 import imageUrl from '../assets/bro.png'
 
 interface Category {

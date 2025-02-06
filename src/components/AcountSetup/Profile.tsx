@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MdKeyboardArrowDown, MdClose } from "react-icons/md";
 import axios, { AxiosError } from "axios";
 

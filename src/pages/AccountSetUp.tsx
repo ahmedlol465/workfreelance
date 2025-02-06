@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import AccountData from "../components/AcountSetup/AccountData";
 import HowYouKnowForm from "../components/AcountSetup/TellAboutYourSelf";
 import SignupFormStep2 from "../components/AcountSetup/Profile";
