@@ -106,8 +106,8 @@ const ReportModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
 
 // --- Project Card Component ---
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
-    const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-    const [isReportModalOpen, setIsReportModalOpen] = React.useState(false); // State for Report Modal
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isReportModalOpen, setIsReportModalOpen] = useState(false); // State for Report Modal
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -201,13 +201,13 @@ const FilterSidebar: React.FC<{
     onBudgetChange: (min: number | null, max: number | null) => void;
     onClearFilters: () => void;
 }> = ({ onCategoryChange, onDurationChange, onBudgetChange, onClearFilters }) => {
-    const [selectedCategories, setSelectedCategories] = React.useState<string[]>([]);
-    const [selectedDuration, setSelectedDuration] = React.useState<string | null>(null);
-    const [minBudget, setMinBudget] = React.useState<string>('');
-    const [maxBudget, setMaxBudget] = React.useState<string>('');
-    const [isCategoriesOpen, setIsCategoriesOpen] = React.useState(true);
-    const [isDurationOpen, setIsDurationOpen] = React.useState(true);
-    const [isBudgetOpen, setIsBudgetOpen] = React.useState(true);
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+    const [selectedDuration, setSelectedDuration] = useState<string | null>(null);
+    const [minBudget, setMinBudget] = useState<string>('');
+    const [maxBudget, setMaxBudget] = useState<string>('');
+    const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
+    const [isDurationOpen, setIsDurationOpen] = useState(true);
+    const [isBudgetOpen, setIsBudgetOpen] = useState(true);
 
     const categoriesList = [
         "Web Development", "Mobile App Development", "Design", "Marketing", "Writing", "Data Entry", "Other" // Example categories - adjust to your API
@@ -344,7 +344,7 @@ const FilterSidebar: React.FC<{
 };
 
 const SearchBar: React.FC<{ onSearch: (query: string) => void }> = ({ onSearch }) => {
-    const [searchQuery, setSearchQuery] = React.useState('');
+    const [searchQuery, setSearchQuery] = useState('');
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(event.target.value);
@@ -499,11 +499,11 @@ const OpenProjects: React.FC<OpenProjectsProps> = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [filteredProjects, setFilteredProjects] = React.useState<Project[]>([]);
-    const [searchQuery, setSearchQuery] = React.useState('');
-    const [selectedCategories, setSelectedCategories] = React.useState<string[]>([]);
-    const [selectedDuration, setSelectedDuration] = React.useState<string | null>(null);
-    const [budgetRange, setBudgetRange] = React.useState<{ min: number | null, max: number | null }>({ min: null, max: null });
+    const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+    const [selectedDuration, setSelectedDuration] = useState<string | null>(null);
+    const [budgetRange, setBudgetRange] = useState<{ min: number | null, max: number | null }>({ min: null, max: null });
     const [selectedSortOption, setSelectedSortOption] = useState<string>("Newest"); // State for selected sorting option
 
 
@@ -532,11 +532,11 @@ const OpenProjects: React.FC<OpenProjectsProps> = () => {
     }, [currentPage]);
 
 
-    React.useEffect(() => {
+    useEffect(() => {
         applyFiltersAndSearch(projects); // Re-apply filters when filter criteria or projects change
     }, [searchQuery, selectedCategories, selectedDuration, budgetRange, projects]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         setTotalPages(Math.ceil(filteredProjects.length / itemsPerPage) || 1);
         setCurrentPage(1);
     }, [filteredProjects]);
