@@ -536,8 +536,8 @@ const ControlPanel: React.FC = () => {
     useState<StatusCounts | null>(null);
   const [serviceStatusData, setServiceStatusData] =
     useState<StatusCounts | null>(null);
-  const [purchaseStatusData, setPurchaseStatusData] =
-    useState<StatusCounts | null>(null);
+  // const [purchaseStatusData, setPurchaseStatusData] =
+  //   useState<StatusCounts | null>(null);
 
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -1085,7 +1085,8 @@ const ControlPanel: React.FC = () => {
                 {/* My Purchase Section - Dynamic */}
               {renderStatusSection(
                 "My Purchase",
-                purchaseStatusData,
+                null, // No "Add" button for purchases in the image
+                // purchaseStatusData,
                 null, // No "Add" button for purchases in the image
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

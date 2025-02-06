@@ -171,7 +171,7 @@ const MultiStepForm: React.FC = () => {
                 style={{ width: `${calculateProgress()}%` }}
               ></div>
               <div className="relative flex justify-between w-full">
-                {stepsConfig.map((step, index) => (
+                {/* {stepsConfig.map((step, index) => (
                   <div
                     key={index}
                     className="flex flex-col items-center"
@@ -203,7 +203,7 @@ const MultiStepForm: React.FC = () => {
                       )}
                     </div>
                   </div>
-                ))}
+                ))} */}
               </div>
             </div>
           </div>

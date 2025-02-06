@@ -3,22 +3,22 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 // --- Types --- (Keep types at the top for clarity)
-interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  userName: string;
-  role: string;
-  accountType: string;
-  isEmailVerified: number;
-  created_at: string;
-  updated_at: string;
-  profilePhoto: string | null;
-  Region: string | null;
-  Phone_number: string | null;
-  Gender: string | null;
-}
+// interface User {
+//   id: number;
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   userName: string;
+//   role: string;
+//   accountType: string;
+//   isEmailVerified: number;
+//   created_at: string;
+//   updated_at: string;
+//   profilePhoto: string | null;
+//   Region: string | null;
+//   Phone_number: string | null;
+//   Gender: string | null;
+// }
 
 interface UserData {
   id: number;

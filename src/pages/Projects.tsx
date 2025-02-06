@@ -621,11 +621,11 @@ const OpenProjects: React.FC<OpenProjectsProps> = () => {
             tempProjects.sort((b, a) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
         } else if (selectedSortOption === "Lower offers") {
             // Assuming 'offers' could be added to Project type and API response, default to 0 if missing
-            tempProjects.sort((a, b) => (/* a.offers || 0 */ 0) - (/* b.offers || 0 */ 0)); // Placeholder for offers sort
+            // tempProjects.sort((a, b) => (/* a.offers || 0 */ 0) - (/* b.offers || 0 */ 0)); // Placeholder for offers sort
             console.warn("Sorting by 'Lower offers' is placeholder as offers data is not available.");
         } else if (selectedSortOption === "Most offers") {
             // Assuming 'offers' could be added to Project type and API response, default to 0 if missing
-            tempProjects.sort((b, a) => (/* a.offers || 0 */ 0) - (/* b.offers || 0 */ 0)); // Placeholder for offers sort
+            // tempProjects.sort((b, a) => (/* a.offers || 0 */ 0) - (/* b.offers || 0 */ 0)); // Placeholder for offers sort
             console.warn("Sorting by 'Most offers' is placeholder as offers data is not available.");
         }
 
