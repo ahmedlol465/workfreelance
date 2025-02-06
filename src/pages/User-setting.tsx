@@ -883,7 +883,7 @@ const SettingPage: React.FC = () => {
       setError(null);
       try {
         const response = await axios.get<GetUserResponse>(
-          "http://127.0.0.1:8000/api/GetUser",
+          `${process.env.REACT_APP_BACK_URL}/GetUser`,
           {
             headers: {
               Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzM4NTIyNjE0LCJleHAiOjE3MzkzODY2MTQsIm5iZiI6MTczODUyMjYxNCwianRpIjoiZUpiR2xwRG9hQnhiVElvdCIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Wqfd9Tu5LOuR96rr1Sh6ZTOKfoGBfUG7L2bUCIa93t8`,
@@ -1012,10 +1012,9 @@ const SettingPage: React.FC = () => {
         description: userData.user_data?.description,
         skillsOfWork: userData.user_data?.skillsOfWork,
       };
-console.log("profileDataToUpdate",profileDataToUpdate);
 
       const response = await axios.put<ProfileUpdateResponse>(
-        "http://127.0.0.1:8000/api/profileUpdate",
+        `${process.env.REACT_APP_BACK_URL}/profileUpdate`,
         profileDataToUpdate,
         {
           headers: {
@@ -1024,7 +1023,6 @@ console.log("profileDataToUpdate",profileDataToUpdate);
         }
       );
 
-      console.log("Profile updated:", response.data);
       setUserData(response.data.user);
       toast.success("Profile updated successfully!");
     } catch (e: any) {

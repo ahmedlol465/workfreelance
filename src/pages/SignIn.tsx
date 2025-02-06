@@ -4,7 +4,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail, HiOutlineLockClosed } from 'react-icons/hi';
 import pro from '../assets/bro.png';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import { GoogleOAuthProvider, useGoogleOneTapLogin } from '@react-oauth/google';
 import { useLinkedIn } from 'react-linkedin-login-oauth2';
 import { useGoogleLogin } from '@react-oauth/google';
@@ -15,12 +15,14 @@ const SignInPage = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/login', {
+    
+      const response = await axios.post(`${process.env.REACT_APP_BACK_URL}/login`, {
         email,
         password,
       });
@@ -43,6 +45,9 @@ const SignInPage = () => {
     }
   };
 
+  
+  
+
   const { linkedInLogin } = useLinkedIn({
         clientId: process.env.REACT_APP_LINKEDIN_CLIENT_ID!,
         redirectUri: "http://localhost:5173", // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
@@ -53,33 +58,18 @@ const SignInPage = () => {
           console.log(error);
         },
       });
-    
 
-
-
-
-
-
-  // useGoogleOneTapLogin({
-  //   onSuccess:(CredentialResponse) => {
-  //     console.log(CredentialResponse);
-
-  //   },
-  //   use_fedcm_for_prompt: true
-  // })
+      
 
 
 
 
 
       const login = useGoogleLogin({
+        flow: 'implicit',
           onSuccess: async (tokenResponse) => {
               const accessToken = tokenResponse.access_token;
-  
-              if (!accessToken) {
-                  alert("Google Login Success, but access token is missing.");
-                  return;
-              }
+
   
               try {
                   // Fetch user info from Google API
@@ -91,10 +81,34 @@ const SignInPage = () => {
   
                   if (userInfoResponse.ok) {
                       const userInfo = await userInfoResponse.json();
-                      const email = userInfo.email; // Extract email
-                      console.log("User Email:", email);
-                      console.log("Full UserInfo Response:", userInfo);
-                      alert(`Google Login Successful! Email: ${email}`);
+                      const email = userInfo; // Extract email
+                      setEmail(email);
+
+                      try {
+    
+                        const response = await axios.post(`${process.env.REACT_APP_BACK_URL}/login`, {
+                          email,
+                          password,
+                        });
+                  
+                        localStorage.setItem('token', response.data.token);
+                        navigate('/Dashboard'); 
+                  
+                        console.log('Login successful:', response.data);
+                      } catch (err: any) {
+                        if (err.response) {
+                          setError(err.response.data.message);
+                          console.error('Login failed:', err.response.data);
+                        } else if (err.request) {
+                          console.error('Login failed: No response received', err.request);
+                          setError('No response received from the server.');
+                        } else {
+                          console.error('Login failed:', err.message);
+                          setError('An error occurred. Please try again later.');
+                        }
+                      }
+                      console.log("User Email:", userInfo);
+                      
                   } else {
                       console.error(
                           "Failed to fetch user info from Google Userinfo API:",
@@ -118,7 +132,7 @@ const SignInPage = () => {
     <div className="flex-col min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <h2 className="text-4xl font-bold text-gray-800 text-center mb-6">Sign in</h2>
 
-      <div className="max-w-4xl w-full bg-white rounded-lg shadow-lg overflow-hidden md:flex">
+      <div className=" max-w-7xl w-full bg-white rounded-lg shadow-lg overflow-hidden md:flex">
         <div className="w-full md:w-1/2 py-10 px-8 md:px-12 lg:px-16">
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-6">
             <button onClick={() => login()} className="flex items-center justify-center bg-red-500 text-white font-semibold py-3 px-4 rounded-lg hover:bg-red-600 transition-all duration-200 shadow-md">
@@ -179,7 +193,7 @@ const SignInPage = () => {
           <div className="mt-6">
             <p className="text-gray-700 font-medium mb-2">Need help?</p>
             <ul className="text-sm text-gray-600 space-y-1">
-            <li> <button className="text-left text-blue-500 hover:underline focus:outline-none">I don't have an account yet</button> </li>
+            <li> <Link to="/joinUS"><button className="text-left text-blue-500 hover:underline focus:outline-none">I don't have an account yet</button></Link> </li>
             <li> <button className="text-left text-blue-500 hover:underline focus:outline-none">Forgot my password</button> </li>
               <li> <button className="text-left text-blue-500 hover:underline focus:outline-none">I did not receive the activation code</button> </li>
             </ul>

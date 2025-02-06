@@ -19,12 +19,15 @@ import EditAccountPage from "./pages/user-profile";
 import OpenProjects from "./pages/Projects";
 import FreelancerList from "./pages/Freelancers";
 import ContactMePage from "./pages/ContactMePage";
+import Home from "./pages/HomePage";
 
 function App() {
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
+
+          <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/password-recovery" element={<PasswordRecoveryPage />} />
           <Route path="/joinUs" element={<JoinUsPage />} />

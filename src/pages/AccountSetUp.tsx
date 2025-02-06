@@ -2,8 +2,9 @@ import  { useState } from "react";
 import AccountData from "../components/AcountSetup/AccountData";
 import HowYouKnowForm from "../components/AcountSetup/TellAboutYourSelf";
 import SignupFormStep2 from "../components/AcountSetup/Profile";
-import { FaCheckCircle } from "react-icons/fa";
+// import { FaCheckCircle } from "react-icons/fa";
 import AccountActivated from "../components/Succus";
+import { FaCheckCircle } from "react-icons/fa"; // Import icons
 
 const AccountSetup: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(
@@ -42,44 +43,51 @@ const AccountSetup: React.FC = () => {
       <div className="container mx-auto px-4 py-16">
         {/* Progress Bar */}
         <div className="">
-          {" "}
-          {/* Added margin for spacing */}
-          <div className="flex items-center relative">
-            <div className="flex-grow border-t-2 border-green-500 mx-10"></div>
-            <div className="flex justify-between w-full absolute top-0 left-0 -mt-3">
-              {steps.map((step, index) => (
-                <div key={index} className="flex flex-col items-center">
-                  <div
-                    className={`w-8 h-8 rounded-full border-2  border-green-500 flex items-center justify-center font-bold text-lg
-                                        ${
-                                          index + 1 < currentStep
-                                            ? "bg-green-500 text-white"
-                                            : index + 1 === currentStep
-                                            ? "bg-white text-green-600"
-                                            : "text-green-500"
-                                        }
-                                         `}
-                  >
-                    {index + 1 < currentStep ? (
-                      <FaCheckCircle className="w-5 h-5" />
-                    ) : (
-                      index + 1
-                    )}
-                  </div>
-                  <span
-                    className={`mt-2 text-sm ${
-                      index + 1 <= currentStep
-                        ? "font-bold text-gray-800"
-                        : "text-gray-500"
-                    }`}
-                  >
-                    {step.label}
-                  </span>
-                </div>
-              ))}
+      <div className="flex items-center relative">
+        {/* Solid green line - Centered vertically */}
+        <div className="absolute left-0 ml-10 w-[1150px] h-0.5 bg-green-500 transform top-[17px] -translate-y-1/2 z-0 "></div>
+
+        {/* Step circles and labels */}
+        <div className="flex justify-between w-full">
+          {steps.map((step, index) => (
+            <div key={index} className="flex flex-col items-center relative z-10">
+              {/* Step circle */}
+              <div
+                className={`w-8 h-8 rounded-full border-2 flex items-center justify-center font-bold text-lg
+                            ${
+                              index + 1 < currentStep
+                                ? "border-green-500 bg-green-500 text-white" // Completed: Green background, white text
+                                : index + 1 === currentStep
+                                ? "border-green-500 bg-white text-green-500" // Current: White background, green text
+                                : "border-gray-300 bg-white text-gray-500" // Pending: White background, grey text
+                            }
+                          `}
+              >
+                {index + 1 < currentStep ? (
+                  <FaCheckCircle className="w-5 h-5 text-white" /> // Green checkmark for completed steps
+                ) : index + 1 === currentStep ? (
+                  currentStep
+                ) : (
+                  index + 1 // Step number for pending steps
+                )}
+              </div>
+
+              {/* Step label */}
+              <span
+                className={`mt-2 text-sm text-center ${
+                  index + 1 <= currentStep
+                    ? "font-bold text-gray-800"
+                    : "text-gray-500"
+                }`}
+                style={{ width: "max-content" }}
+              >
+                {step.label}
+              </span>
             </div>
-          </div>
+          ))}
         </div>
+      </div>
+    </div>
 
         {/* Render the appropriate component based on currentStep */}
         {/* {renderStepContent()} */}

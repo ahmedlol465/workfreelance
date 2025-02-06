@@ -638,19 +638,19 @@ const ControlPanel: React.FC = () => {
           // purchaseStatusResponse,
         ] = await Promise.all([
           axios.get<BalanceResponse>(
-            "http://127.0.0.1:8000/api/user-balances",
+            `${process.env.REACT_APP_BACK_URL}/user-balances`,
             { headers: { Authorization: `Bearer ${authToken}` } }
           ),
           // axios.get<StatusCountsResponse>(
-          //   "http://127.0.0.1:8000/api/projects/status-counts",
+          //   `${process.env.REACT_APP_BACK_URL}/projects/status-counts`,
           //   { headers: { Authorization: `Bearer ${authToken}` } }
           // ),
           axios.get<StatusCountsResponse>(
-            "http://127.0.0.1:8000/api/services/status-counts",
+            `${process.env.REACT_APP_BACK_URL}/services/status-counts`,
             { headers: { Authorization: `Bearer ${authToken}` } }
           ),
           axios.get<StatusCountsResponse>(
-            "http://127.0.0.1:8000/api/purchases/status-counts",
+            `${process.env.REACT_APP_BACK_URL}/purchases/status-counts`,
             { headers: { Authorization: `Bearer ${authToken}` } }
           ),
         ]);

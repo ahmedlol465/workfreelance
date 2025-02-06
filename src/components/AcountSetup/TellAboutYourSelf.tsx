@@ -13,8 +13,8 @@ const HowYouKnowForm = () => {
   ];
 
   return (
-    <div className="my-10  flex justify-center items-center py-10 p-6 rounded-xl w-full min-h-screen">
-      <form className="w-full pb-32 max-w-lg bg-white p-8 rounded-lg transform transition-all duration-300 hover:shadow-xl">
+    <div className="my-10  flex justify-center items-center py-10 p-6 rounded-xl w-[1000px] min-h-screen">
+      <form className="w-full pb-32 max-w-2xl bg-white p-8 rounded-lg transform transition-all duration-300 hover:shadow-xl">
         <h2 className="text-center text-3xl font-bold text-gray-800 mb-8">
           How do you know WorkLink?
         </h2>

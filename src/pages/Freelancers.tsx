@@ -650,7 +650,7 @@ const FreelancerList: React.FC<FreelancerListProps> = () => {
       setError(null);
       try {
         const response = await axios.get<FreelancerApiResponse>(
-          `http://127.0.0.1:8000/api/GetAllFreelancers?page=${currentPage}`
+          `${process.env.REACT_APP_BACK_URL}/GetAllFreelancers?page=${currentPage}`
         );
         // Process skillsOfWork to be array and flatten user_data for easier access
         const processedFreelancers = response.data.freelancers.map(

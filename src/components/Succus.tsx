@@ -2,7 +2,7 @@ import success from '../assets/pana.png'
 const AccountActivated = () => {
   localStorage.removeItem("currentStep")
   return (
-    <div className="my-32 mt-14 bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <div className="my-32  mt-14 bg-white p-8 rounded-lg shadow-md  w-[700px]">
       <div className="border rounded-md mb-6">
         <img
           src={success} // Replace with the actual path to your image

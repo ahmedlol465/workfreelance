@@ -93,7 +93,7 @@ const SignupFormStep2: React.FC<AccountDataProps> = ({setCurrentStep}: any) => {
 
     try {
       // Send the data to the API
-      const response = await axios.post("http://127.0.0.1:8000/api/UserData", formData);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/UserData`, formData);
 
       // Handle success
       setSuccessMessage(response.data.message);
@@ -110,8 +110,8 @@ const SignupFormStep2: React.FC<AccountDataProps> = ({setCurrentStep}: any) => {
   };
 
   return (
-    <div className="w-[600px] py-14 flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-14 rounded shadow-md w-full max-w-lg">
+    <div className="w-[1200px] py-14 mb-40 flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="bg-white p-14 rounded shadow-md h-[700px] w-full max-w-4xl">
         {/* Job Title Input */}
         <div className="mb-4">
           <label htmlFor="jobTitle" className="block text-gray-700 text-sm font-bold mb-2">
