@@ -5,9 +5,7 @@ import SignInPage from "./pages/SignIn";
 import PasswordRecoveryPage from "./pages/RecoveryPassword";
 import JoinUsPage from "./pages/JoinUs";
 import AccountSetup from "./pages/AccountSetUp";
-import SignupFormStep2 from "./components/AcountSetup/Profile";
-import TellUsAboutYourself from "./components/AcountSetup/TellAboutYourSelf";
-import HowYouKnowForm from "./components/AcountSetup/TellAboutYourSelf";
+
 import BusinessGallery from "./components/BussnissGallaryFreeLance";
 import ControlPanel from "./pages/ControlPanal";
 import UserAccount from "./pages/UserAccount";
@@ -21,8 +19,6 @@ import EditAccountPage from "./pages/user-profile";
 import OpenProjects from "./pages/Projects";
 import FreelancerList from "./pages/Freelancers";
 import ContactMePage from "./pages/ContactMePage";
-import AccountData from "./components/AcountSetup/AccountData";
-// import MultiStepForm from "./pages/RecoveryPassword";
 
 function App() {
   return (

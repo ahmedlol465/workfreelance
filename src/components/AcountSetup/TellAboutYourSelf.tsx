@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 
 const HowYouKnowForm = () => {

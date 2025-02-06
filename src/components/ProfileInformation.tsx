@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ProfileInformation from '../components/ProfileInformation';
 
 const AccountSetup = () => {

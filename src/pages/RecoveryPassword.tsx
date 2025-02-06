@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import AccountData from "../components/AcountSetup/AccountData";
 
 interface Step {
   label: string;

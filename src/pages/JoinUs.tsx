@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import axios, { AxiosError } from 'axios';
+import  { AxiosError } from 'axios';
 import { FcGoogle } from 'react-icons/fc';
 import { FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail, HiOutlineLockClosed } from 'react-icons/hi';
