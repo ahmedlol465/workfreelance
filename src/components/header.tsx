@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { HiMenu } from 'react-icons/hi';
 import { BsGlobe } from 'react-icons/bs';
 import logo from '../assets/worklink_logo_1-removebg-preview 1.png'
+import { Link } from 'react-router-dom';
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -37,12 +39,17 @@ const Header = () => {
           <a href="#" className="text-gray-300 hover:text-white">
             Services
           </a>
-          <button className="bg-transparent border border-orange-500 text-orange-500 px-4 py-2 rounded hover:bg-orange-500 hover:text-white transition-colors duration-200">
-            Sign in
-          </button>
-          <button className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition-colors duration-200">
-            Join
-          </button>
+          
+<Link to="/signin">
+              <button className="bg-transparent border border-orange-500 text-orange-500 px-4 py-2 rounded hover:bg-orange-500 hover:text-white transition-colors duration-200">
+                Sign in
+              </button>
+            </Link>
+          <Link to="/joinUs">
+            <button className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition-colors duration-200">
+              Join
+            </button>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -72,12 +79,16 @@ const Header = () => {
             <a href="#" className="block text-gray-300 hover:text-white px-4 py-2">
               Services
             </a>
-            <button className="bg-transparent border border-orange-500 text-orange-500 px-4 py-2 rounded hover:bg-orange-500 hover:text-white transition-colors duration-200">
-              Sign in
-            </button>
+            <Link to="/signin">
+              <button className="bg-transparent border border-orange-500 text-orange-500 px-4 py-2 rounded hover:bg-orange-500 hover:text-white transition-colors duration-200">
+                Sign in
+              </button>
+            </Link>
+          <Link to="/joinUs">
             <button className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition-colors duration-200">
               Join
             </button>
+          </Link>
           </div>
         </div>
       )}
